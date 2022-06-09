@@ -1,6 +1,7 @@
 # solidity-course
 Blockchain Solidity Course
 
+
 As I progress through this course I will be saving my projects here
 
 Blockchain Solidity Smart contracts from freecodecamp - 30 hour free video course 
