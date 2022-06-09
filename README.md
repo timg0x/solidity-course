@@ -30,6 +30,10 @@ Video at:
 
 https://www.youtube.com/embed/gyMwXuJrbJQ
 
+Github for the course:
+
+https://github.com/smartcontractkit/full-blockchain-solidity-course-js
+
 
 Eth Dev companion - detailed, comprehensive list of resources from Consensys 2021 boot camp
 
