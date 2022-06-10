@@ -7,17 +7,24 @@ pragma solidity ^0.8.8;
 
 import "./PriceConverter.sol";
 
+error NotOwner();
+
+//833819
+//813879 constant
+//790288 immutable
+//765159 custom error code
+//770349 added receive() and fallback()
 contract FundMe {
     using PriceConverter for uint256;
-    uint256 public minimumUsd = 10 * 1e18;
+    uint256 public constant minimumUsd = 10 * 1e18;
 
     address[] public funders;
     mapping(address => uint256) public addressToAmountFunded;
 
-    address public owner;
+    address public immutable i_owner;
 
     constructor(){
-        owner = msg.sender;
+        i_owner = msg.sender;
     }
 
     function fund() public payable {
@@ -46,7 +53,16 @@ contract FundMe {
     }
 
     modifier onlyOwner {
-        require(msg.sender == owner, "Sender is not owner!");
+        //require(msg.sender == i_owner, "Sender is not owner!");
+        if(msg.sender != i_owner){ revert NotOwner(); }
         _;
+    }
+
+    receive() external payable {
+        fund();
+    }
+
+    fallback() external payable {
+        fund();
     }
 }
